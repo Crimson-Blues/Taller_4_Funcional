@@ -11,12 +11,12 @@ package object SubsecuenciaMasLarga {
       sinI ++ conI
     }
   }
-
-  def subSecuenciaAsoc(s: Secuencia, inds: Seq[Int]): Subsecuencia = {
+  
+  def subSecuenciaAsoc(s:Secuencia, inds:Seq[Int]): Subsecuencia = {
     for (i <- inds) yield s(i)
   }
 
-  def subSecuenciasDe(s: Secuencia): Set[Subsecuencia] = {
+  def subSecuenciasDe(s:Secuencia): Set[Subsecuencia] = {
     for (inds <- subindices(0, s.length)) yield subSecuenciaAsoc(s, inds)
   }
 
@@ -27,7 +27,7 @@ package object SubsecuenciaMasLarga {
     } yield s(i) < s(i + 1)).forall(identity)
   }
 
-  def subSecuenciasInc(s: Secuencia): Set[Subsecuencia] = {
+  def subSecuenciasInc(s:Secuencia): Set[Subsecuencia] = {
     for {
       subsec <- subSecuenciasDe(s)
       if incremental(subsec)
@@ -35,7 +35,7 @@ package object SubsecuenciaMasLarga {
   }
 
   
-  def subsecuenciaIncrementalMasLarga(s: Secuencia): Subsecuencia = {
+  def subsecuenciaIncrementalMasLarga(s:Secuencia): Subsecuencia = {
     if (s.isEmpty) Seq()
     else {
       val incrementales = subSecuenciasInc(s)
@@ -45,12 +45,12 @@ package object SubsecuenciaMasLarga {
     }
   }
 
-  def ssimlComenzandoEn(i: Int, s: Secuencia): Subsecuencia = {
+  def ssimlComenzandoEn(i:Int, s:Secuencia): Subsecuencia = {
     // Devuelve la subsecuencia incremental mas larga de s que comienza en s(i)
   ...
   }
 
-  def subSecIncMasLargaV2(s: Secuencia): Subsecuencia = {
+  def subSecIncMasLargaV2(s:Secuencia): Subsecuencia = {
     // Devuelve una subsecuencia incremental mas larga de s
   ...
   }
